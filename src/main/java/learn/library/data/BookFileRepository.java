@@ -38,7 +38,7 @@ public class BookFileRepository implements BookRepository{
         List<Book> allBooks = getAllBooks();
         allBooks.add(book);
 
-        saveBooks(allBooks);
+        //saveBooks(allBooks);
         // Returns book for validation in BookService
         return book;
     }

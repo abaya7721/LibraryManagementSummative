@@ -3,7 +3,9 @@ package learn.library.domain;
 import learn.library.data.BookRepository;
 import learn.library.data.DataAccessException;
 import learn.library.data.model.Book;
+import learn.library.data.model.Category;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +21,17 @@ public class BookService {
             return repository.getAllBooks();
     }
 
+    public List<Book> allBooksCategory(Category category) throws DataAccessException {
+        ArrayList<Book> booksCategory = new ArrayList<>();
+
+        for(Book book : repository.getAllBooks()) {
+            if (book.getCategory() == category) {
+                booksCategory.add(book);
+            }
+        }
+        return booksCategory;
+    }
+
     public Book addBook(Book book) throws DataAccessException {
         Book validatedBook = duplicateValidationCheck(book);
         if(!validatedBook.isSuccess()) {
@@ -26,6 +39,16 @@ public class BookService {
         }
         book = repository.addBook(book);
         return book;
+    }
+
+    public void removeBook(Book book) throws DataAccessException {
+        String ISBN = null;
+        for (Book loopingBook : allBooks()){
+            if(book.getISBN().equals(loopingBook.getISBN())) {
+                ISBN = book.getISBN();
+            }
+         }
+        repository.removeBook(ISBN);
     }
 
 

@@ -1,8 +1,13 @@
 package learn.library;
 
+import learn.library.data.BookFileRepository;
+import learn.library.data.BookRepository;
+import learn.library.domain.BookService;
+import learn.library.ui.Controller;
+import learn.library.ui.View;
+
 public class Main {
     public static void main(String[] args) {
-
 
         /*
             /library
@@ -24,8 +29,15 @@ public class Main {
                     Controller.java -runs application, manages operations
 
                 Main.java
-
-
         */
+
+        BookRepository repo = new BookFileRepository("book_repository.txt");
+        View view = new View();
+        BookService bookService = new BookService(repo);
+        Controller controller = new Controller(bookService, view);
+
+        controller.run();
+
+
     }
 }
