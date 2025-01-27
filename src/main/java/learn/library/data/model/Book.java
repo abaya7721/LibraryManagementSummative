@@ -6,17 +6,31 @@ public class Book {
     private String ISBN;
     private String title;
     private String author;
+    private int year;
     private Category category;
     private int shelfNumber;
     private int position;
 
-    public Book(String ISBN, String title, String author, Category category, int shelfNumber, int position ) {
+    public Book() {
+
+    }
+
+    public Book(String ISBN, String title, String author, int year, Category category, int shelfNumber, int position ) {
         this.ISBN = ISBN;
         this.title = title;
         this.author = author;
+        this.year = year;
         this.category = category;
         this.shelfNumber = shelfNumber;
         this.position = position;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public int getShelfNumber() {

@@ -8,10 +8,10 @@ public interface BookRepository{
 
     ArrayList<Book> getAllBooks()  throws DataAccessException;
 
-    Book addBook()  throws DataAccessException;
+    Book addBook(Book book) throws DataAccessException;
 
-    void removeBook(int shelf, int position)  throws DataAccessException;
+    void removeBook(String ISBN)  throws DataAccessException;
 
-
+    boolean updateBook(Book book) throws DataAccessException;
 
 }
