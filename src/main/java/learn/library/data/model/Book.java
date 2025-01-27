@@ -1,5 +1,7 @@
 package learn.library.data.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Book {
@@ -10,6 +12,8 @@ public class Book {
     private Category category;
     private int shelfNumber;
     private int position;
+
+    private final ArrayList<String> messages = new ArrayList<>();
 
     public Book() {
 
@@ -80,6 +84,19 @@ public class Book {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    // for validation
+    public List<String> getMessages() {
+        return messages;
+    }
+
+    public boolean isSuccess() {
+        return messages.isEmpty();
+    }
+
+    public void addErrorMessage(String message) {
+        messages.add(message);
     }
 
     @Override
